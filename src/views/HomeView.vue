@@ -2,7 +2,9 @@
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" @click="getData">
     <div @click="changeNumber">changeNumber</div>
-    <div v-for="v in indexInfo" :key="v.item"> {{v}} </div>
+    <div v-for="v in indexInfo" :key="v.item">
+      <img :src="v.item">
+    </div>
     <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
   </div>
 </template>
@@ -48,17 +50,13 @@ export default defineComponent({
       return data
     }
 
-    // const num = computed(() => {
-    //   return data.num + 8
-    // })
-
     const getData = function (): void {
       console.log('getData')
       const first = 'https://picsum.photos/200/300'
       for (let index = 0; index < 5001; index++) {
         indexInfo.push({
           name: 'image',
-          item: `${first}`
+          item: `${first}?${index}`
         })
       }
     }
